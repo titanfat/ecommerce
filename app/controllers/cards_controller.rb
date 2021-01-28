@@ -1,6 +1,6 @@
 class CardsController < ApplicationController
   before_action :set_card, only: %i[ show edit update destroy ]
-
+  rescue_from ActiveRecord::RecordNotFound, with: :invalid_card
   # GET /cards or /cards.json
   def index
     @cards = Card.all
@@ -49,14 +49,20 @@ class CardsController < ApplicationController
 
   # DELETE /cards/1 or /cards/1.json
   def destroy
-    @card.destroy
+    @card.destroy if @card.id == session[:card_id]
+    session[:card_id] = nil
     respond_to do |format|
-      format.html { redirect_to cards_url, notice: "Card was successfully destroyed." }
+      format.html { redirect_to store_index_url, notice: "Your cart is empty!" }
       format.json { head :no_content }
     end
   end
 
   private
+
+  def invalid_card
+    logger.error "Attept to access to valid card #{params[:id]}"
+    redirect_to store_index_url, notice: "Invalid cart"
+  end
     # Use callbacks to share common setup or constraints between actions.
     def set_card
       @card = Card.find(params[:id])
