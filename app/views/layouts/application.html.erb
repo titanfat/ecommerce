@@ -17,6 +17,11 @@
   </header>
   <section class="content">
     <nav class="side_nav">
+
+      <div id="card" class="cards">
+        <%= render_if @card && @card.line_items.any?, @card %>
+      </div>
+
       <ul>
         <li><a href="/">Home</a></li>
         <li><a href="/questions">Questions</a></li>

@@ -2,6 +2,8 @@
 <aside id="notice"><%= notice %></aside>
 <% end %>
 
+
+
 <h1> Your catalog </h1>
 
 <ul class="catalog">
@@ -16,6 +18,8 @@
     </p>
     <div class="price">
       <%= number_to_currency(product.price) %>
+      <%= button_to "Add to cart", line_items_path(product_id: product),
+      remote: true %>
     </div>
   </li>
   <% end %>
