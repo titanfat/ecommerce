@@ -1,5 +1,8 @@
 class OrdersController < ApplicationController
+  include CurrentCard
   before_action :set_order, only: %i[ show edit update destroy ]
+  before_action :set_card,  only: %i[new create]
+  before_action :ensure_card_isnt_empty, only: :new
 
   # GET /orders or /orders.json
   def index
@@ -22,10 +25,13 @@ class OrdersController < ApplicationController
   # POST /orders or /orders.json
   def create
     @order = Order.new(order_params)
+    @order.add_line_items_from_card(@card)
 
     respond_to do |format|
       if @order.save
-        format.html { redirect_to @order, notice: "Order was successfully created." }
+        Card.destroy(session[:card_id])
+        session[:card_id] = nil
+        format.html { redirect_to store_index_url, notice: "Thank you for your order" }
         format.json { render :show, status: :created, location: @order }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -53,6 +59,14 @@ class OrdersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to orders_url, notice: "Order was successfully destroyed." }
       format.json { head :no_content }
+    end
+  end
+
+  private
+
+  def ensure_card_isnt_empty
+    if @card.line_items.empty?
+      redirect_to store_index_url, notice: "Your cart is empty"
     end
   end
 
