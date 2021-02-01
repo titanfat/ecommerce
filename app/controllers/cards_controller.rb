@@ -64,12 +64,12 @@ class CardsController < ApplicationController
     redirect_to store_index_url, notice: "Invalid cart"
   end
     # Use callbacks to share common setup or constraints between actions.
-    def set_card
-      @card = Card.find(params[:id])
-    end
+  def set_card
+    @card = Card.find(params[:id])
+  end
 
     # Only allow a list of trusted parameters through.
-    def card_params
-      params.fetch(:card, {})
-    end
+  def card_params
+    params.fetch(:card, {})
+  end
 end
