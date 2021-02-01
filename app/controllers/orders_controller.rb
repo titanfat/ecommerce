@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   include CurrentCard
+  skip_before_action :authorize, only: [:new, :create]
   before_action :set_order, only: %i[ show edit update destroy ]
   before_action :set_card,  only: %i[new create]
   before_action :ensure_card_isnt_empty, only: :new
