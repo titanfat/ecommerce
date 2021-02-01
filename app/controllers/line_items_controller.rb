@@ -1,4 +1,5 @@
 class LineItemsController < ApplicationController
+  skip_before_action :authorize, only: :create
   include CurrentCard
   before_action :set_line_item, only: %i[ show edit update destroy ]
   before_action :set_card, only: [:create]

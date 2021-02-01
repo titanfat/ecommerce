@@ -1,5 +1,6 @@
 class CardsController < ApplicationController
-  before_action :set_card, only: %i[ show edit update destroy ]
+  skip_before_action :authorize, only: %i[create update destroy]
+  before_action :set_card, only: %i[show edit update destroy]
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_card
   # GET /cards or /cards.json
   def index
