@@ -29,8 +29,10 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       if @order.save
+        @order.charge!(pay_type_params)
         Card.destroy(session[:card_id])
         session[:card_id] = nil
+        ChargeOrderJob.perform_now(@order, pay_type_params.to_h)
         format.html { redirect_to store_index_url, notice: "Thank you for your order" }
         format.json { render :show, status: :created, location: @order }
       else
