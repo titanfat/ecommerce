@@ -1,0 +1,19 @@
+ru:
+  layouts:
+    application:
+      title:      "Прогматичный библиотекарь"
+      home:       "Новости"
+      questions:  "Вопросы"
+      news:       "Новости"
+      contact:    "Контакты"
+
+      store:
+        index:
+          title_html: "Каталог"
+          add_html:   "Добавить в корзину"
+
+          cards:
+            card:
+              title:     "Ваша корзина"
+              empty:     "Очистить корзину"
+              checkout:  "Оформить заказ"
