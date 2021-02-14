@@ -1,19 +1,48 @@
 ru:
+  thanks: "Спасибо за покупку"
   layouts:
     application:
-      title:      "Прогматичный библиотекарь"
-      home:       "Новости"
-      questions:  "Вопросы"
-      news:       "Новости"
-      contact:    "Контакты"
-
-      store:
-        index:
-          title_html: "Каталог"
-          add_html:   "Добавить в корзину"
-
-          cards:
-            card:
-              title:     "Ваша корзина"
-              empty:     "Очистить корзину"
-              checkout:  "Оформить заказ"
+      title:  "Библиотека програмиста"
+      home: "Домой"
+      questions: "Вопросы"
+      news: "Новости"
+      contact:  "Контакты"
+  store:
+    index:
+      title_html: "Каталог"
+      add_html: "Добавить в корзину"
+  cards:
+    card:
+      title: "Ваша корзина"
+      empty: "Очистить корзину"
+      checkout: "Оформить заказ"
+  number:
+    currency:
+      format:
+        unit: "$US"
+        precision: 2
+        separator: ","
+        delimiter: "."
+        format: "%n&nbsp;%u"
+  orders:
+    new:
+      legend: "Введите ваши данные"
+    form:
+      name: "Имя"
+      address_html: "Адрес"
+      email:  "E-mail"
+      pay_type: "Оплата"
+      pay_prompt_html:  "Тип оплаты"
+      submit: "Добавить в корзину"
+      pay_types:
+        check: "Оформить"
+        credit_card:  "Картой"
+        purchase_order: "Просмотреть корзину"
+      check_pay_type:
+        rounting_number: "#Номер"
+        account_number: "# Акаунт"
+      credit_card_pay_type:
+        cc_number: "Номер карты"
+        expiration_date: "Дата"
+      purchase_order_pay_type:
+        po_number:  "Номер"

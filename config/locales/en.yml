@@ -30,22 +30,51 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
+  thanks: "Thank you for your order"
+  hello: "Hello world"
   layouts:
     application:
-      title:     "The Progmatic Bookshelf"
-      home:      "Home"
+      title:  "The Pragmatic Bookshelf"
+      home: "Home"
       questions: "Questions"
-      news:      "News"
-      contact:   "Contact"
-
-      store:
-        index:
-          title_html: "Your catalog"
-          add_html:   "Add to cart"
-
-          cards:
-            card:
-              title:     "Your cart"
-              empty:     "Empty cart"
-              checkout:  "Checkout"
-
+      news: "News"
+      contact:  "Contact"
+  store:
+    index:
+      add_html: "Add to Cart"
+      title_html: "Your Pragmatic Catalog"
+  cards:
+    card:
+      title: "Your Cart"
+      empty: "Empty Cart"
+      checkout: "Checkout"
+  number:
+    currency:
+      format:
+        unit: "$"
+        precision: 2
+        separator: "."
+        delimiter: ","
+        format: "%u%n"
+  orders:
+    new:
+      legend: "Please Enter Your Details"
+    form:
+      name: "Name"
+      address_html: "Address"
+      email:  "E-mail"
+      pay_type: "Pay with"
+      pay_prompt_html:  "Select a payment method"
+      submit: "Place Order"
+      pay_types:
+        check: "Check"
+        credit_card:  "Credit Card"
+        purchase_order:  "Purchase Order"
+      check_pay_type:
+        rounting_number: "Rounting #"
+        account_number: "Account #"
+      credit_card_pay_type:
+        cc_number: "CC #"
+        expiration_date: "Expiry"
+      purchase_order_pay_type:
+        po_number:  "PO #"

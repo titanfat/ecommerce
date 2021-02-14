@@ -34,7 +34,7 @@ class OrdersController < ApplicationController
         Card.destroy(session[:card_id])
         session[:card_id] = nil
         ChargeOrderJob.perform_now(@order, pay_type_params.to_h)
-        format.html { redirect_to store_index_url, notice: "Thank you for your order" }
+        format.html { redirect_to store_index_url(locale: I18n.locale), notice: I18n.t('.thanks') }
         format.json { render :show, status: :created, location: @order }
       else
         format.html { render :new, status: :unprocessable_entity }
